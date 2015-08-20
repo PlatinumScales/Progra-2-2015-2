@@ -56,9 +56,11 @@ public class Calculadora extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        OperandoUno.setEditable(false);
         OperandoUno.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         OperandoUno.setText("0");
 
+        OperandoDos.setEditable(false);
         OperandoDos.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         OperandoDos.setText("0");
 
@@ -154,7 +156,19 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        Resultado.setEditable(false);
+        Resultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResultadoActionPerformed(evt);
+            }
+        });
+
         jButton2.setText(".");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         ButtonClear.setText("Clear");
         ButtonClear.addActionListener(new java.awt.event.ActionListener() {
@@ -167,20 +181,12 @@ public class Calculadora extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ButtonClear)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(OperandoActual)
-                            .addComponent(OperandoUno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ButtonSix)
@@ -207,19 +213,22 @@ public class Calculadora extends javax.swing.JFrame {
                                                 .addComponent(ButtonOne)
                                                 .addComponent(ButtonSeven)))
                                         .addComponent(ButtonEquals, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRBMinus)
+                            .addComponent(jRBPlus)
+                            .addComponent(jRBTimes)
+                            .addComponent(jRBDiv))
+                        .addContainerGap(70, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ButtonClear)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                                .addComponent(OperandoDos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55))
-                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(OperandoUno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRBMinus)
-                                    .addComponent(jRBPlus)
-                                    .addComponent(jRBTimes)
-                                    .addComponent(jRBDiv))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addComponent(OperandoDos, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Resultado))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,9 +237,9 @@ public class Calculadora extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(OperandoUno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(OperandoDos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(Resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
+                .addComponent(Resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(ButtonClear)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -335,6 +344,14 @@ public class Calculadora extends javax.swing.JFrame {
         OperandoActual.setSelected(false);
     }//GEN-LAST:event_ButtonClearActionPerformed
 
+    private void ResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ResultadoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        concatenarNumero(".");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -372,19 +389,21 @@ public class Calculadora extends javax.swing.JFrame {
     
     public void concatenarNumero (String digito)
     {
-        // convertir el string de operando1 a número
-        Integer operando = 0;
-        if (! OperandoActual.isSelected()) 
-         operando = Integer.parseInt(OperandoUno.getText());           
-        else
-            operando = Integer.parseInt(OperandoDos.getText());
-        // agréguele la unidad correspondiente al boton que se presionó
-        Integer resultado = operando * 10 + Integer.parseInt(digito);
-        // guárdelo en el operando deseado
-        if (! OperandoActual.isSelected()) 
-            OperandoUno.setText (resultado.toString());
-        else
-            OperandoDos.setText (resultado.toString());
+        
+        if (! OperandoActual.isSelected()) {
+            if(OperandoUno.getText().equals("0")){
+             OperandoUno.setText(digito);
+            }else{
+                 OperandoUno.setText(OperandoUno.getText() + digito);
+            }
+        }else{
+            if(OperandoDos.getText().equals("0")){
+             OperandoDos.setText(digito);
+            }else{
+                 OperandoDos.setText(OperandoDos.getText() + digito);
+            }
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -415,18 +434,34 @@ public class Calculadora extends javax.swing.JFrame {
     private void CalcularResultado(String operandoUno, 
                                    String operandoDos, 
                                    String operador) {
-        Integer intOperandoUno = Integer.parseInt(operandoUno);
-        Integer intOperandoDos = Integer.parseInt(operandoDos);
-        double resultado = 0;
+        float intOperandoUno = Float.parseFloat(operandoUno);
+        float intOperandoDos = Float.parseFloat(operandoDos);
+        float resultado = 0;
+        boolean error = false;
+        System.out.println(intOperandoUno);
+         System.out.println(operador);
+        System.out.println(intOperandoDos);
         if (operador == "+")
             resultado = intOperandoUno + intOperandoDos;
         if (operador == "-")
             resultado = intOperandoUno - intOperandoDos;
         if (operador == "*")
             resultado = intOperandoUno * intOperandoDos;
-        if (operador == "/")
-            resultado = intOperandoUno / intOperandoDos;      
-        String strResultado = String.valueOf(resultado);
+        if (operador == "/"){
+            if(intOperandoDos == 0){
+                resultado = 0;
+                error = true;
+            }else{
+                resultado = intOperandoUno / intOperandoDos;   
+            }
+        }
+        String strResultado = "";
+               if(!error){
+                strResultado = String.valueOf(resultado);
+               }else{
+                   strResultado = "Error!";
+               }
+       
         Resultado.setText(strResultado);
     }
 }
